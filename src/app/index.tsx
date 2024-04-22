@@ -37,12 +37,12 @@ export default function Page() {
   const handlePress = async () => {
     if (active) return;
     setActive(true);
-    setTheme(theme === "light" ? "dark" : "light");
     const snapshot = await makeImageFromView(ref);
     setOverlay(snapshot);
     await sleep(80);
-    mask.value = withTiming(SCREEN_WIDTH, { duration: 800 });
-    await sleep(800);
+    setTheme(theme === "light" ? "dark" : "light");
+    mask.value = withTiming(SCREEN_WIDTH, { duration: 500 });
+    await sleep(500);
     setOverlay(null);
     mask.value = 0;
     setActive(false);
